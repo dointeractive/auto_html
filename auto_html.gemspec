@@ -9,7 +9,13 @@ Gem::Specification.new do |gem|
   gem.email    = 'desimic@gmail.com'
   gem.homepage = 'http://github.com/dejan/auto_html'
 
+  # You can use this rails helper
+  # http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html
+  # or this
+  # https://github.com/tenderlove/rails_autolink
   gem.add_dependency('rinku', '~> 1.7')
+  # For md processing use this gem
+  # https://github.com/gettalong/kramdown
   gem.add_dependency('redcarpet', '~> 3.1')
 
   # ensure the gem is built out of versioned files
