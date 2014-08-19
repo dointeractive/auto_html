@@ -1,9 +1,7 @@
 require 'rails'
-
 require 'active_support/core_ext/module/attribute_accessors' if Rails::VERSION::MAJOR >= 4
 
 module AutoHtmlFor
-
   # default options that can be overridden on the global level
   @@auto_html_for_options = {
     :htmlized_attribute_suffix => '_html'

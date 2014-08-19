@@ -1,5 +1,12 @@
+## 1.7.0, released 2014-00-00
+* New filter:
+  - Rutube
+  - Coub
+* Ubpade filter: Add embed urls to  coub, rutube, youtube, vimeo
+* Dropped support mri 1.8 and 1.9.2
+
 ## 1.6.4, released 2014-04-11
-* New filter: youtube image filter 
+* New filter: youtube image filter
 
 ## 1.6.3, released 2014-04-01
 * Fixed Twitter filter
@@ -9,14 +16,14 @@
 * Deferred loading of filters dependencies when possible
 * Wrap youtube video with div for easier styling
 * Update redcarpet to latest
-* New filter: instagram 
+* New filter: instagram
 * Small fix for hashtag filter
 * Allow replacing youtube URL without protocol
 * Fix gist filter - add type attribute
 
 ## 1.6.1, released 2014-01-05
 * Permit auto_html_for on an attribute that's not in the DB.
-* Image filter: :proxy option, do not format existing <img> 
+* Image filter: :proxy option, do not format existing <img>
 * Link filter: :short_link_name option
 * GoogleMap filter: support for all countries (domains)
 * Gist filter: support for new URL scheme
@@ -26,7 +33,7 @@
 * New filters: worldstar
 * Deprecate GoogleVideo since it is discontinued
 
-## 1.6.0, released 2012-07-28 
+## 1.6.0, released 2012-07-28
 * Twitter, Flickr, Soundcloud filters added
 * Options for markdown filter added
 * Omit protocol where applicable (youtube, googlemap, vimeo) to avoid mixed content warnings. Fixes [#50](https://github.com/dejan/auto_html/issues/50)
@@ -37,11 +44,11 @@
 * Fixed Mongoid support
 
 ## 1.5.2, released 2012-05-05
-* Works with Rails 3.2.1+ 
+* Works with Rails 3.2.1+
 * Updated youtube regex to account for feature=player_embedded url param
 
 ## 1.5.1, released 2012-02-18
-* Rails 3.2 support 
+* Rails 3.2 support
 * Gist & GoogleMap filter
 * fix #26 - error after the rake task completed
 * fix #29 - youtube filter swallows text that comes after a link
@@ -92,7 +99,7 @@
 ## 1.3.1, released 2010-08-22
 * Rails 3 initialization fix
 * fixes to conform Rails 3.0.0.rc, sanitization by default in text_helpers (auto_link, simple_format)
-* added vimeo html5 universal embed player 
+* added vimeo html5 universal embed player
 
 ## 1.3.0, released 2010-08-14
 * no need for explicit call to auto_html_prepare
