@@ -1,7 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
 class LinkTest < Test::Unit::TestCase
-
   def test_transform
     result = auto_html('http://vukajlija.com') { link }
     assert_equal '<a href="http://vukajlija.com" >http://vukajlija.com</a>', result

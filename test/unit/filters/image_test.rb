@@ -1,7 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
 class ImageTest < Test::Unit::TestCase
-
   def test_transform
     result = auto_html('http://rors.org/images/rails.png') { image({alt: nil}) }
     assert_equal '<img src="http://rors.org/images/rails.png" alt=""/>', result
@@ -61,5 +60,4 @@ class ImageTest < Test::Unit::TestCase
     result = auto_html('http://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png') { image({alt: nil,proxy: "https://proxy/?url="}) }
     assert_equal '<img src="https://proxy/?url=http://img.skitch.com/20100910-1wrbg5749xe29ya5t3s85bnaiy.png" alt=""/>', result
   end
-
 end
