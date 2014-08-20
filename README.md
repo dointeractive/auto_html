@@ -5,6 +5,13 @@ auto_html [![Build Status](https://secure.travis-ci.org/dejan/auto_html.png?bran
 auto_html is a Rails extension for transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...). It's the perfect choice if you don't want to bother visitors with rich HTML editor or markup code, but you still want to allow them to embed video, images, links and more on your site, purely by pasting URL. Check out the [live demo](http://rors.org/demos/auto_html).
 
 
+## Supported version
+
+MRI:   1.9.3+
+RBX:   HEAD
+JRuby: none
+
+
 ## Install
 
 Specify the gem in Gemfile of the project
@@ -28,7 +35,7 @@ You'll probably have user input stored in model, so it's a good place to automat
         html_escape
         image
         youtube(width: 400, height: 250, autoplay: true)
-        link target: "_blank", rel: "nofollow"
+        link target: '_blank', rel: 'nofollow'
         simple_format
       end
     end
@@ -58,8 +65,9 @@ If you need to display preview, no problem. Have something like this as action i
 AutoHtml is highly customizable, and you can easily create new filters that will transform user input any way you like. For instance, this is the image filter that comes bundled with plugin:
 
     AutoHtml.add_filter(:image) do |text|
-      text.gsub(/http:\/\/.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
-        %|<img src="#{match}" alt=""/>|
+      regex = %r{http://.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?}
+      text.gsub(regex) do |match|
+        %{<img src="#{match}" alt=""/>}
       end
     end
 
