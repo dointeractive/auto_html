@@ -1,9 +1,8 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
 class SanitizeTest < Test::Unit::TestCase
-
   def test_trasform
-    result = auto_html("<script>alert(0)</script>") { sanitize }
+    result = auto_html('<script>alert(0)</script>') { sanitize }
     assert_equal '', result
   end
 
@@ -32,5 +31,4 @@ class SanitizeTest < Test::Unit::TestCase
     #   guarantee that the resulting markup is valid.
     #
   end
-
 end

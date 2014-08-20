@@ -6,7 +6,7 @@ rails_version = ENV['RAILS_VERSION'] || 'default'
 
 rails = case rails_version
 when 'master'
-  {github: 'rails/rails'}
+  { github: 'rails/rails' }
 when 'default'
   '~> 3.2.0'
 else
@@ -14,5 +14,9 @@ else
 end
 
 gem 'rails', rails
-gem 'sqlite3', '~> 1.3.3'
-gem 'fakeweb'
+
+# to develop depend
+group :test, :development do
+  gem 'sqlite3', '~> 1.3.3'
+  gem 'fakeweb'
+end
