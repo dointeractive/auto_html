@@ -1,7 +1,6 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 
 class YouTubeTest < Test::Unit::TestCase
-
   def test_transform
     result = auto_html('http://www.youtube.com/watch?v=BwNrmYRiX_o') { youtube }
     assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
@@ -70,5 +69,10 @@ class YouTubeTest < Test::Unit::TestCase
   def test_transform_with_m_subdomain_and_short_url
     result = auto_html('http://m.youtu.be/BwNrmYRiX_o') { youtube }
     assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>', result
+  end
+
+  def test_transform_short_link
+    result = auto_html('https://youtu.be/t7NdBIA4zJg') { youtube }
+    assert_equal '<iframe width="420" height="315" src="//www.youtube.com/embed/t7NdBIA4zJg" frameborder="0" allowfullscreen></iframe>', result
   end
 end
