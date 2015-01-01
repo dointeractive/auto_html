@@ -8,12 +8,13 @@ module AutoHtml
 
     def self.add_filter(name, &block)
       filter = Filter.new(block)
-      @@filters.merge!(name => filter)
-      src = %|
+      @@filters[name] = filter
+
+      src = %{
         def #{name}(options = {})
           @text = @@filters["#{name}".to_sym].apply(@text, options)
         end
-      |
+      }
       class_eval src, __FILE__, __LINE__
       filter
     end

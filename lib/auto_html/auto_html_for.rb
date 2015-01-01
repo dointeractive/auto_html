@@ -6,7 +6,7 @@ module AutoHtmlFor
 
   # default options that can be overridden on the global level
   @@auto_html_for_options = {
-    :htmlized_attribute_suffix => '_html'
+    htmlized_attribute_suffix: '_html'
   }
   mattr_reader :auto_html_for_options
 
@@ -22,31 +22,30 @@ module AutoHtmlFor
         return unless ActiveRecord::Base.connection.table_exists? self.table_name
       end
 
-      suffix =  AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
-      auto_html_for_columns = [raw_attrs].flatten.map { |a| "#{a}#{suffix}" }
-      
+      suffix = AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
+      auto_html_for_columns = [raw_attrs].flat_map{ |a| "#{a}#{suffix}" }
+
       # Needed for Mongoid
       column_names = self.respond_to?(:column_names) ? self.column_names : fields.keys
-      
-      missing_cache_columns =  auto_html_for_columns - column_names
+
+      missing_cache_columns = auto_html_for_columns - column_names
       missing_cache_columns.each do |missing_cache_column|
-        raw_attr = missing_cache_column.gsub(suffix, '')
+        raw_attr = missing_cache_column.sub(suffix, '')
         define_method(missing_cache_column) do
           val = self[raw_attr] || self.send(raw_attr.to_sym)
           auto_html(val, &proc)
         end
       end
-      
+
       cache_columns = auto_html_for_columns - missing_cache_columns
       cache_columns.each do |cache_column|
-        raw_attr = cache_column.gsub(suffix, '')
+        raw_attr = cache_column.tr(suffix, '')
         define_method("#{raw_attr}=") do |val|
-          self[raw_attr] = val
           result = auto_html(val, &proc)
           self.send("#{cache_column}=", result)
-          val
+          self[raw_attr] = val
         end
-        
+
         define_method(cache_column) do
           result = self[cache_column]
           result.respond_to?(:html_safe) ? result.html_safe : result
