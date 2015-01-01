@@ -11,7 +11,7 @@ namespace :auto_html do
     klass  = AutoHtml::Task.obtain_class.constantize
     suffix = AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
     column_names = klass.respond_to?(:column_names) ? klass.column_names : klass.fields.keys
-    observed_attributes = column_names.select { |c| c=~/#{suffix}$/ }.map { |c| c.gsub(/#{suffix}$/, '')}
+    observed_attributes = column_names.select { |c| c=~/#{suffix}$/ }.map { |c| c.sub(/#{suffix}$/, '')}
 
     i = 0
     klass.find_each do |item|

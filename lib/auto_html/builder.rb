@@ -8,7 +8,8 @@ module AutoHtml
 
     def self.add_filter(name, &block)
       filter = Filter.new(block)
-      @@filters.merge!(name => filter)
+      @@filters[name] = filter
+
       src = %|
         def #{name}(options = {})
           @text = @@filters["#{name}".to_sym].apply(@text, options)

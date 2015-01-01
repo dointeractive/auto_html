@@ -2,7 +2,7 @@ module AutoHtml
   extend self
 
   def self.add_filter(name, &block)
-    AutoHtml::Builder.add_filter(name, &block)
+    Builder.add_filter(name, &block)
   end
 
   def auto_html(raw, &proc)
