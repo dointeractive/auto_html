@@ -10,11 +10,11 @@ module AutoHtml
       filter = Filter.new(block)
       @@filters[name] = filter
 
-      src = %|
+      src = %{
         def #{name}(options = {})
           @text = @@filters["#{name}".to_sym].apply(@text, options)
         end
-      |
+      }
       class_eval src, __FILE__, __LINE__
       filter
     end

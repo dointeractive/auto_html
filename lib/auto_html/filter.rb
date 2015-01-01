@@ -11,8 +11,8 @@ module AutoHtml
     end
 
     def apply(text, options = {})
-      _options = @options && @options.merge(options)
-      @block.call(text.to_s.dup, _options)
+      full_options = @options && @options.merge(options)
+      @block.call(text.to_s.dup, full_options)
     end
   end
 end
