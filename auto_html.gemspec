@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   # For md processing use this gem
   # https://github.com/gettalong/kramdown
   gem.add_dependency('redcarpet', '~> 3.1')
+  gem.add_dependency('test-unit', '~> 3.0.8')
 
   # ensure the gem is built out of versioned files
   gem.files = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*',
