@@ -11,11 +11,11 @@ class Post < ActiveRecord::Base
   end
 end
 
-class AutoHtmlForOptionsTest < Test::Unit::TestCase
+class AutoHtmlForOptionsTest < Minitest::Test
   include FixtureSetup
 
   def test_transform_after_save
-    @article = Post.new(:content => 'Yo!')
+    @article = Post.new(content: 'Yo!')
     assert_equal '<p>Yo!</p>', @article.content_htmlized
     @article.save!
     assert_equal '<p>Yo!</p>', @article.content_htmlized

@@ -6,7 +6,7 @@ AutoHtml.add_filter(:foo) do |text|
 end
 
 AutoHtml.add_filter(:bar) do |text|
-  "bar"
+  'bar'
 end
 
 class User < ActiveRecord::Base
@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
   end
 end
 
-class FilterTest < Test::Unit::TestCase
+class FilterTest < Minitest::Test
   include FixtureSetup
 
   def test_transform_after_save
-    @article = User.new(:bio => 'in progress...')
+    @article = User.new(bio: 'in progress...')
     assert_equal 'bar', @article.bio_html
   end
 end

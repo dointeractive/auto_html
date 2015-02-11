@@ -1,8 +1,7 @@
 require File.expand_path('../../unit_test_helper', __FILE__)
 require 'fakeweb'
 
-class TwitterTest < Test::Unit::TestCase
-
+class TwitterTest < Minitest::Test
   def setup
     response = %Q(
       {
@@ -41,5 +40,4 @@ class TwitterTest < Test::Unit::TestCase
 
     assert_equal transformed_html, result
   end
-
 end
